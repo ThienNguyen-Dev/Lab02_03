@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Lab02_03.Models.Book>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.TitlePageName</h2>
+
+<table cellpadding="10" border="1" width="100%" style="text-align:center">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Image Cover</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr >
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author)
+            </td>
+            <td>
+                <img src="/@item.Imgcover" width="70" title="cover" />
+            </td>
+            <td>
+                <a href="/Books/Edit/@item.Id" title="Edit Book">Edit</a>
+            </td>
+            <td>
+                <a href="/Books/Delete/@item.Id" title="Delete Book">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
